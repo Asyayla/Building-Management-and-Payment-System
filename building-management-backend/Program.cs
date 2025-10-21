@@ -38,7 +38,7 @@ public class Program
 
         builder.Services.AddHealthChecks();
 
-        //  CORS policy: frontend port 3000
+        //  CORS policy: frontend port 3001
         builder.Services.AddCors(options =>
         {
             options.AddPolicy("AllowVite",
@@ -108,3 +108,4 @@ public class Program
     }
 
 }
+
