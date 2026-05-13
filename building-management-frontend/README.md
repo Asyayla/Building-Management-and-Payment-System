@@ -1,4 +1,4 @@
-# Frontend — Building Management & Payment System
+# Building Management & Payment System - Frontend
 
 React single-page application for managing apartments and tracking monthly dues. Built with TypeScript and styled with Tailwind CSS.
 
