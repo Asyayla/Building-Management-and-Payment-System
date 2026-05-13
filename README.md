@@ -87,4 +87,41 @@ npm start
 ## Detailed Documentation
 
 - Backend: [`building-management-backend/README.md`](building-management-backend/README.md)
+- Frontend: [`building-management-frontend/README.md`](building-management-frontend/README.md)└── README.md
+```
+
+---
+
+## Getting Started
+
+### Prerequisites
+
+- [.NET 8 SDK](https://dotnet.microsoft.com/download)
+- [Node.js 18+](https://nodejs.org/) and npm
+
+### Run Locally
+
+```bash
+# 1. Clone the repository
+git clone https://github.com/Asyayla/building-management-and-payments.git
+cd Building-Management-and-Payment-System
+
+# 2. Start the backend
+cd building-management-backend
+dotnet restore
+dotnet run
+# API runs at http://localhost:5000
+
+# 3. Start the frontend (new terminal)
+cd building-management-frontend
+npm install
+npm start
+# App runs at http://localhost:3001
+```
+
+---
+
+## Detailed Documentation
+
+- Backend: [`building-management-backend/README.md`](building-management-backend/README.md)
 - Frontend: [`building-management-frontend/README.md`](building-management-frontend/README.md)
