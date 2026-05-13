@@ -84,7 +84,7 @@ npm start
 
 ---
 
-## Sub-project READMEs
+## Detailed Documentation
 
-- [Backend README](./BACKEND_README.md)
-- [Frontend README](./frontend/README.md)
+- Backend: [`building-management-backend/README.md`](building-management-backend/README.md)
+- Frontend: [`building-management-frontend/README.md`](building-management-frontend/README.md)
