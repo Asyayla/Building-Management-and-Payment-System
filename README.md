@@ -1,4 +1,4 @@
-# 🏢 Building Management & Payment System
+# Building Management & Payment System
 
 A full-stack web application for managing residential buildings — track apartments, residents, and monthly dues from a single dashboard.
 
