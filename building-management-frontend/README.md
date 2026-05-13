@@ -1,70 +1,75 @@
-# Getting Started with Create React App
+# Frontend — Building Management & Payment System
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+React single-page application for managing apartments and tracking monthly dues. Built with TypeScript and styled with Tailwind CSS.
+
+---
+
+## Tech Stack
+
+- **React 19.1.1**
+- **TypeScript**
+- **Tailwind CSS**
+- **Create React App**
+- Communicates with the .NET backend over HTTP
+
+---
+
+## Project Structure
+
+```
+building-management-frontend/
+├── public/                   # Static assets & index.html
+├── src/                      # Application source code
+├── .env                      # Environment variables (API base URL etc.)
+├── tailwind.config.js        # Tailwind CSS configuration
+├── tsconfig.json             # TypeScript compiler configuration
+├── package.json
+└── README.md
+```
+
+---
+
+## Getting Started
+
+### Prerequisites
+
+- [Node.js 18+](https://nodejs.org/) and npm
+
+### Install & Run
+
+```bash
+cd building-management-frontend
+npm install
+npm start
+```
+
+The app will open at [http://localhost:3001](http://localhost:3001).  
+It expects the backend to be running at `http://localhost:5000`.
+
+---
 
 ## Available Scripts
 
-In the project directory, you can run:
+| Script | Description |
+|---|---|
+| `npm start` | Start development server with hot reload |
+| `npm test` | Run tests in interactive watch mode |
+| `npm run build` | Build optimised production bundle to `/build` |
 
-### `npm start`
+### Production Build
 
-Runs the app in the development mode.\
-Open [http://localhost:3001](http://localhost:3001) to view it in your browser.
+```bash
+npm run build
+```
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Output goes to the `build/` folder — minified, hashed, and ready to serve as static files behind any web server (Nginx, Apache, etc.).
 
-### `npm test`
+---
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Connecting to the Backend
 
-### `npm run build`
+API base URL is set in `src/services/` (or `.env` if configured). Update it to match your backend host when deploying:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+```
+REACT_APP_API_URL=http://localhost:5000
+```
