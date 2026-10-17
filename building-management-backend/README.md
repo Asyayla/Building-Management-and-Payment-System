@@ -1,14 +1,25 @@
-# Building Management & Payment System - Backend 
+# Building Management & Payment System - Backend
 
-ASP.NET Core Web API serving the building management and dues tracking system.
+ASP.NET Core Web API for managing apartments and recording payments.
 
 ---
 
 ## Tech Stack
 
 - **.NET 8.0** — ASP.NET Core Web API
-- **SQLite 3.43.2** — Embedded relational database
+- **SQLite** — embedded relational database
 - **Entity Framework Core** — ORM and migrations
+
+---
+
+## Data Model
+
+| Entity | Fields |
+|---|---|
+| `Apartment` | `Id`, `Block`, `Floor`, `Number`, `IsOccupied` |
+| `Payment` | `Id`, `ApartmentId` (foreign key to `Apartment`), `Amount`, `Paid`, `CreatedAt` |
+
+Each payment belongs to one apartment, so the payments of an apartment form its payment history.
 
 ---
 
@@ -18,16 +29,15 @@ ASP.NET Core Web API serving the building management and dues tracking system.
 building-management-backend/
 ├── Controllers/                          # API route handlers
 ├── Migrations/                           # EF Core database migrations
-├── Models/                               # Entity models
+├── Models/                               # Entities and DTOs
 ├── Properties/                           # Launch settings
 ├── data/                                 # SQLite database files
 ├── BuildingManagement.csproj             # Project file
-├── BuildingManagement.db                 # SQLite database
 ├── BuildingManagement.sln                # Solution file
 ├── Dockerfile                            # Container image definition
-├── docker-compose.yml                    # Multi-container setup
+├── docker-compose.yml                    # Docker Compose setup
 ├── Program.cs                            # App entry point & middleware config
-├── appsettings.json                      # Production configuration
+├── appsettings.json                      # Configuration
 └── appsettings.Development.json          # Development configuration
 ```
 
@@ -66,17 +76,16 @@ building-management-backend/
 ### Run
 
 ```bash
-# From the root of the repository
+cd building-management-backend
 dotnet restore
-dotnet run
+dotnet run --urls http://localhost:5287
 ```
 
-The API will be available at `http://localhost:5000`.  
-Swagger UI (if enabled) will be at `http://localhost:5000/swagger`.
+The API will be available at `http://localhost:5287`. In the Development environment, Swagger UI is served at `http://localhost:5287/swagger`.
 
 ### Database
 
-SQLite database file (`BuildingManagement.db`) is created automatically on first run via EF Core migrations. No manual setup is required.
+The SQLite database is created automatically on first run: the app applies the EF Core migrations at startup (`Database.Migrate()` in `Program.cs`). No manual setup is required, and the database file is not committed to the repository.
 
 To apply migrations manually:
 
@@ -86,7 +95,7 @@ dotnet ef database update
 
 ### Docker
 
-The project includes a `Dockerfile` and `docker-compose.yml` for containerised deployment:
+The project includes a `Dockerfile` and a `docker-compose.yml`:
 
 ```bash
 docker-compose up --build
@@ -96,12 +105,4 @@ docker-compose up --build
 
 ## Configuration
 
-Environment-specific settings live in `appsettings.json`:
-
-```json
-{
-  "ConnectionStrings": {
-    "DefaultConnection": "Data Source=building.db"
-  }
-}
-```
+The database connection string is set in `appsettings.json` under `ConnectionStrings:DefaultConnection`. Environment-specific overrides go in `appsettings.Development.json`.

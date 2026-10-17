@@ -1,16 +1,16 @@
 # Building Management & Payment System - Frontend
 
-React single-page application for managing apartments and tracking monthly dues. Built with TypeScript and styled with Tailwind CSS.
+React single-page application for managing apartments and tracking payments. Built with TypeScript and styled with Tailwind CSS.
 
 ---
 
 ## Tech Stack
 
-- **React 19.1.1**
+- **React 19**
 - **TypeScript**
 - **Tailwind CSS**
 - **Create React App**
-- Communicates with the .NET backend over HTTP
+- Talks to the .NET backend over HTTP
 
 ---
 
@@ -20,7 +20,7 @@ React single-page application for managing apartments and tracking monthly dues.
 building-management-frontend/
 ├── public/                   # Static assets & index.html
 ├── src/                      # Application source code
-├── .env                      # Environment variables (API base URL etc.)
+├── .env                      # API base URL
 ├── tailwind.config.js        # Tailwind CSS configuration
 ├── tsconfig.json             # TypeScript compiler configuration
 ├── package.json
@@ -34,6 +34,7 @@ building-management-frontend/
 ### Prerequisites
 
 - [Node.js 18+](https://nodejs.org/) and npm
+- The backend running at `http://127.0.0.1:5287` (see the backend README)
 
 ### Install & Run
 
@@ -43,8 +44,7 @@ npm install
 npm start
 ```
 
-The app will open at [http://localhost:3001](http://localhost:3001).  
-It expects the backend to be running at `http://localhost:5000`.
+Open the URL printed in the terminal.
 
 ---
 
@@ -52,9 +52,9 @@ It expects the backend to be running at `http://localhost:5000`.
 
 | Script | Description |
 |---|---|
-| `npm start` | Start development server with hot reload |
+| `npm start` | Start the development server with hot reload |
 | `npm test` | Run tests in interactive watch mode |
-| `npm run build` | Build optimised production bundle to `/build` |
+| `npm run build` | Build the production bundle to `/build` |
 
 ### Production Build
 
@@ -62,14 +62,16 @@ It expects the backend to be running at `http://localhost:5000`.
 npm run build
 ```
 
-Output goes to the `build/` folder — minified, hashed, and ready to serve as static files behind any web server (Nginx, Apache, etc.).
+The output goes to the `build/` folder as static files that any web server can serve.
 
 ---
 
 ## Connecting to the Backend
 
-API base URL is set in `src/services/` (or `.env` if configured). Update it to match your backend host when deploying:
+The API base URL is read from `.env`:
 
 ```
-REACT_APP_API_URL=http://localhost:5000
+REACT_APP_API_URL=http://127.0.0.1:5287/api
 ```
+
+Update it to match your backend host when deploying. Restart `npm start` after changing it.
