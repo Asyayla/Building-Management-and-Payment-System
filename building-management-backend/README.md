@@ -81,7 +81,7 @@ dotnet restore
 dotnet run --urls http://localhost:5287
 ```
 
-The API will be available at `http://localhost:5287`. In the Development environment, Swagger UI is served at `http://localhost:5287/swagger`.
+The API will be available at `http://localhost:5287`.
 
 ### Database
 
