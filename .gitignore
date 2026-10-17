@@ -6,3 +6,4 @@ build/
 .vs/
 *.db-shm
 *.db-wal
+*.db
